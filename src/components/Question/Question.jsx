@@ -56,7 +56,7 @@ const Question = ({text}) => {
         }
     ]
 
-  return <article style={articleStyle} className='bg-white rounded-lg shadow-lg flex items-center lg:justify-center'>
+  return <article style={articleStyle} className='bg-white rounded-lg shadow-lg flex items-center'>
       <p className="question" style={questionStyle}>{text}</p>
       {
           options.map(option => <Option key={option.id} title={option.title} divStyles={divStyles}/>)

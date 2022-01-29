@@ -28,14 +28,13 @@ function App() {
   ]
 
   const MainSurveyStyles = {
-    // backgroundColor: 'black'
   }
 
   return (
-    <div className="w-screen h-screen bg-gray-200">
+    <div className="w-screen h-screen bg-gray-200 max-w-full">
       <MainSurvey styles={MainSurveyStyles}>
         <Header />
-          <div className='flex-1'>
+          <div className='flex-1 p-4'>
             {questions.map(question => <Question key={question.id} {...question}/>)
             }
           </div>
