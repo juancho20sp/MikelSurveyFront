@@ -8,7 +8,7 @@ import {
 import './Question.css';
 
 const Question = ({text}) => {
-    const articleStyle = {
+    const divStyle = {
         border: '1px solid gray',
         margin: '15px 5px',
         padding: '10px',
@@ -56,12 +56,12 @@ const Question = ({text}) => {
         }
     ]
 
-  return <article style={articleStyle} className='bg-white rounded-lg shadow-lg flex items-center'>
+  return <div style={divStyle} className='bg-white rounded-lg shadow-lg flex items-center'>
       <p className="question" style={questionStyle}>{text}</p>
       {
           options.map(option => <Option key={option.id} title={option.title} divStyles={divStyles}/>)
       }
-    </article>;
+    </div>;
 };
 
 export default Question;

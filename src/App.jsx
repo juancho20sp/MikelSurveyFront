@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 // Views
 import { MainSurvey } from './views/';
 
@@ -18,28 +20,30 @@ function App() {
       id: 0,
       text: 'Question #1',
     },
-    {
-      id: 1,
-      text: 'Question #2',
-    },
-    {
-      id: 2,
-      text: 'Question #3',
-    }
+    // {
+    //   id: 1,
+    //   text: 'Question #2',
+    // },
+    // {
+    //   id: 2,
+    //   text: 'Question #3',
+    // }
   ]
 
   const MainSurveyStyles = {
   }
 
+  const [survey, setSurvey] = useState([]);
+
   return (
-    <div className="w-screen h-screen bg-gray-200 max-w-full">
+    <div className="w-screen h-full bg-gray-200 max-w-full">
       <MainSurvey styles={MainSurveyStyles}>
         <Header />
-          <div className='flex-1 p-4'>
+          <form className='flex-1 p-4'>
             {questions.map(question => <Question key={question.id} {...question}/>)
             }
-          </div>
-          <Button />
+            <Button />
+          </form>
         <Footer />
       </MainSurvey>
     </div>
