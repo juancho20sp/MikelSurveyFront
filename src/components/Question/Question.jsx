@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Components
 import {
@@ -7,7 +7,7 @@ import {
 
 import './Question.css';
 
-const Question = ({text}) => {
+const Question = ({text, register, errors, idQuestion}) => {
     const divStyle = {
         border: '1px solid gray',
         margin: '15px 5px',
@@ -56,12 +56,28 @@ const Question = ({text}) => {
         }
     ]
 
-  return <div style={divStyle} className='bg-white rounded-lg shadow-lg flex items-center'>
-      <p className="question" style={questionStyle}>{text}</p>
-      {
-          options.map(option => <Option key={option.id} title={option.title} divStyles={divStyles}/>)
-      }
-    </div>;
+    const [error, setError] = useState(false);
+
+    useEffect(() => {
+        if (errors.length > 0) {
+            const keys = Object.keys(errors);
+
+            alert('oh')
+
+            console.log(JSON.stringify(keys))
+        }
+    }, [errors])
+
+
+  return <>
+    <div style={divStyle} className='bg-white rounded-lg shadow-lg flex items-center'>
+        <p className="question" style={questionStyle}>{text}</p>
+        {
+            options.map(option => <Option key={option.id} title={option.title} divStyles={divStyles} register={register} id={option.id} idQuestion={idQuestion}/>)
+        }
+    </div>
+    {Object.keys(errors).filter(key => key.includes(`question-${idQuestion}`)).length > 0 && <p>ERROR!</p>}
+    </>;
 };
 
 export default Question;

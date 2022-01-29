@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Option = ({ title, divStyles }) => {
+const Option = ({ title, divStyles, register, id, idQuestion }) => {
     const selectStyles = {
         border: '2px solid gray',
         width: '100%',
@@ -29,7 +29,8 @@ const Option = ({ title, divStyles }) => {
 
     return <div style={divStyles} className="flex flex-col items-center justify-center">
         <p className='text-md font-semibold text-center'>TOPIC 1</p>
-        <select name="select" style={selectStyles} className='rounded-lg'>
+        <select name="select" style={selectStyles} className='rounded-lg' {...register(`question-${idQuestion}-select-${id}`, { required: true })}>
+            <option value="">Seleccione una opción</option>
             {values.map(value => <option key={value.id} value={value.value}>{value.value}</option>)}
         </select>
 </div>;
