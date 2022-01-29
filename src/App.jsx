@@ -5,7 +5,8 @@ import { MainSurvey } from './views/';
 import { 
   Header,
   Footer,
-  Question
+  Question,
+  Button
  } from './components';
 
 import './App.css';
@@ -38,6 +39,7 @@ function App() {
             {questions.map(question => <Question key={question.id} {...question}/>)
             }
           </div>
+          <Button />
         <Footer />
       </MainSurvey>
     </div>
