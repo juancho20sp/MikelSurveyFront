@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
+import BounceLoader from "react-spinners/BounceLoader";
 
 // Views
 import { MainSurvey } from './views/';
@@ -28,6 +29,13 @@ function App() {
   const MainSurveyStyles = {
   }
 
+  const loaderStyles = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)'
+  };
+
   const {
     isLoading,
     answerOptions,
@@ -39,7 +47,7 @@ function App() {
 
   return (
     <div className="w-screen h-full bg-gray-200 max-w-full">
-      {isLoading && <h2>Cargando...</h2>}
+      {isLoading && <BounceLoader color="#9333ea" loading={isLoading} css={loaderStyles} size={150} />}
 
       {
         !isLoading && 
