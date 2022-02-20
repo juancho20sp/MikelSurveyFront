@@ -20,7 +20,7 @@ const Option = ({ title, divStyles, register, id, idQuestion, answerOptions, err
     const isSelectMissing = Object.keys(errors).filter(key => key === selectId).length > 0;
 
     return <div style={divStyles} className="flex flex-col items-center justify-center">
-        <p className='text-md font-semibold text-center'>TOPIC 1</p>
+        <p className='text-md font-semibold text-center'>{title}</p>
 
         <select name="select" style={isSelectMissing ? selectStylesDanger : selectStyles} className='rounded-lg' {...register(selectId, { required: true })}>
             <option value="">Seleccione una opción</option>

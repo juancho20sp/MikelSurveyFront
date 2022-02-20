@@ -1,3 +1,2 @@
 - Consultar preguntas
-- Consultar opciones de respuesta
 - Consultar tópicos
