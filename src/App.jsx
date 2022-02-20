@@ -15,7 +15,6 @@ import {
 
 // Hooks
 import {
-  useAnswerOptions,
   useHomePrefetch
 } from './hooks';
 
@@ -40,7 +39,8 @@ function App() {
     isLoading,
     answerOptions,
     topics,
-    questions
+    questions,
+    ranks
   } = useHomePrefetch();
 
   const [survey, setSurvey] = useState([]);
@@ -54,7 +54,7 @@ function App() {
         <MainSurvey styles={MainSurveyStyles}>
           <Header />
           <form className='flex-1 p-4' onSubmit={handleSubmit(onSubmit)}>
-            {questions.map((question, idx) => <Question key={question.id} {...question} register={register} errors={errors} idQuestion={idx} answerOptions={answerOptions} topics={topics}/>)
+            {questions.map((question, idx) => <Question key={question.id} {...question} register={register} errors={errors} idQuestion={idx} answerOptions={answerOptions} topics={topics}ranks={ranks}/>)
             }
             <Button />
 

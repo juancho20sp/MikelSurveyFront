@@ -11,6 +11,7 @@ const useHomePrefetch = () => {
     const [answerOptions, setAnswerOptions] = useState([]);
     const [topics, setTopics] = useState([]);
     const [questions, setQuestions] = useState([]);
+    const [ranks, setRanks] = useState([]);
 
     useEffect(() => {
         const fetchData = async() => {    
@@ -18,16 +19,19 @@ const useHomePrefetch = () => {
                 const [
                     myAnswerOptions, 
                     myTopics,
-                    myQuestions
+                    myQuestions,
+                    myRanks
                 ] = await Promise.all([
                     axios.get('/answers'),
                     axios.get('/topics'),
-                    axios.get('/questions')
+                    axios.get('/questions'),
+                    axios.get('/surveys/ranks')
                 ])
-    
+
                 setAnswerOptions(myAnswerOptions.data);
                 setTopics(myTopics.data);
                 setQuestions(myQuestions.data);
+                setRanks(myRanks.data);
     
             } catch(ex){
                 console.error(ex);
@@ -44,7 +48,8 @@ const useHomePrefetch = () => {
         isLoading,
         answerOptions,
         topics,
-        questions
+        questions,
+        ranks
     }
 }
 
