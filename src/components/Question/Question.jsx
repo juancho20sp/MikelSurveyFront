@@ -13,11 +13,12 @@ const Question = ({text_question, is_shared, register, errors, idQuestion, answe
         margin: '15px 5px',
         padding: '10px',
         display: 'grid',    
-        gridTemplateAreas: `"question question question"
-                            "a1 a2 a3"
-                            "a4 a5 a6"
-                            "a7 a8 a9"
-                            "error error error"
+        gridTemplateAreas: `"question question"
+                            "a1 a2"
+                            "a3 a4"
+                            "a5 a6"
+                            "a7 a8"
+                            "error error"
                             `,
         height: '100%'
     }
@@ -44,7 +45,9 @@ const Question = ({text_question, is_shared, register, errors, idQuestion, answe
 
     const selectStyles = {
         border: '2px solid gray',
-        width: '30rem',
+        // $
+        // width: '30rem',
+        width: '100%',
         gridArea: 'a1',
         margin: '5px',
         placeSelf: 'center'
@@ -52,7 +55,8 @@ const Question = ({text_question, is_shared, register, errors, idQuestion, answe
 
     const selectStylesDanger = {
         border: '2px solid red',
-        width: '30rem',
+        // width: '30rem',
+        width: '100%',
         gridArea: 'a1',
         margin: '5px',
         placeSelf: 'center'
@@ -83,7 +87,7 @@ const Question = ({text_question, is_shared, register, errors, idQuestion, answe
         <p className="question" style={questionStyle}>{text_question}</p>
 
         {
-            !is_shared &&
+            !is_shared && (
             idQuestion === 0 ?
 
             // SELECT RANK
@@ -99,6 +103,7 @@ const Question = ({text_question, is_shared, register, errors, idQuestion, answe
             <option value="">Seleccione una opción</option>
             {answerOptions.map(value => <option key={value.id} value={value.answer_value}>{value.text_answer}</option>)}
             </select>
+            )
             
         }
 

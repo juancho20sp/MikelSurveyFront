@@ -1,0 +1,18 @@
+@media (min-width: 800px) {
+    body {
+        background-color: rgb(229, 231, 235, 0.5);
+    }
+
+    #main {
+        width: 80vw !important;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1440px) {
+    #main {
+        width: 60vw !important;
+        margin: 0 auto;
+    }
+}
+

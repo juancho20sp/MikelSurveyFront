@@ -26,6 +26,7 @@ function App() {
   const onSubmit = data => console.log(data);
 
   const MainSurveyStyles = {
+    width: '100vw'
   }
 
   const loaderStyles = {
@@ -46,7 +47,7 @@ function App() {
   const [survey, setSurvey] = useState([]);
 
   return (
-    <div className="w-screen h-full bg-gray-200 max-w-full">
+    <div className="bg-gray-200" id="main" style={MainSurveyStyles}>
       {isLoading && <BounceLoader color="#9333ea" loading={isLoading} css={loaderStyles} size={150} />}
 
       {
