@@ -25,7 +25,6 @@ const Question = ({text, register, errors, idQuestion}) => {
     }
 
     const divStyles = {
-        // border: '2px solid blue',
         padding: '5px',
     }
 
@@ -61,8 +60,6 @@ const Question = ({text, register, errors, idQuestion}) => {
     useEffect(() => {
         if (errors.length > 0) {
             const keys = Object.keys(errors);
-
-            alert('oh')
 
             console.log(JSON.stringify(keys))
         }

@@ -1,11 +1,12 @@
 import React from 'react';
+import {
+    useAnswerOptions
+} from '../../hooks';
 
 const Option = ({ title, divStyles, register, id, idQuestion }) => {
     const selectStyles = {
         border: '2px solid gray',
         width: '100%',
-        // outline: 'black'
-        // margin: '0 1.5%'
     }
 
     const paragraphStyles = {
@@ -27,11 +28,15 @@ const Option = ({ title, divStyles, register, id, idQuestion }) => {
         }
     ]
 
+    
+
     return <div style={divStyles} className="flex flex-col items-center justify-center">
         <p className='text-md font-semibold text-center'>TOPIC 1</p>
         <select name="select" style={selectStyles} className='rounded-lg' {...register(`question-${idQuestion}-select-${id}`, { required: true })}>
             <option value="">Seleccione una opción</option>
+            {/* // $ */}
             {values.map(value => <option key={value.id} value={value.value}>{value.value}</option>)}
+            {/* {answerOptions.map(value => <option key={value.id} value={value.answer_value}>{value.answer_value}</option>)} */}
         </select>
 </div>;
 };

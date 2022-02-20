@@ -12,6 +12,11 @@ import {
   Button
  } from './components';
 
+// Hooks
+import {
+  useAnswerOptions
+} from './hooks';
+
 import './App.css';
 
 
@@ -36,6 +41,8 @@ function App() {
 
   const MainSurveyStyles = {
   }
+
+  const answerOptions = useAnswerOptions();
 
   const [survey, setSurvey] = useState([]);
 
