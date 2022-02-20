@@ -27,7 +27,7 @@ const Option = ({ title, divStyles, register, id, idQuestion, answerOptions, err
             <option value="">Seleccione una opción</option>
             {answerOptions.map(value => <option key={value.id} value={value.answer_value}>{value.text_answer}</option>)}
         </select>
-</div>;
+    </div>;
 };
 
 export default Option;
