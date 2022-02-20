@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 // Axios
 import axios from '../axios';
 
-const useAnswerOptions = async () => {    
+const useAnswerOptions = () => {
+    const [loading, setLoading] = useState(true);
     const [options, setOptions] = useState([]);
 
     useEffect(() => {
@@ -11,12 +12,16 @@ const useAnswerOptions = async () => {
             const data = await axios.get('/answers');
             
             setOptions(data.data);
+            setLoading(false);
         }
 
         fetchData();
     }, [])
     
-    return options;
+    return {
+        options,
+        loading
+    };
 }
 
 export default useAnswerOptions;

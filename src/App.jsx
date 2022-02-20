@@ -42,16 +42,26 @@ function App() {
   const MainSurveyStyles = {
   }
 
-  const answerOptions = useAnswerOptions();
+  const {
+    options: answerOptions,
+    loading: loadingAnswerOptions
+  } = useAnswerOptions();
+
+
+  const isLoading = () => loadingAnswerOptions;
 
   const [survey, setSurvey] = useState([]);
 
   return (
     <div className="w-screen h-full bg-gray-200 max-w-full">
-      <MainSurvey styles={MainSurveyStyles}>
-        <Header />
+      {isLoading() && <h2>Cargando...</h2>}
+
+      {
+        !isLoading() && 
+        <MainSurvey styles={MainSurveyStyles}>
+          <Header />
           <form className='flex-1 p-4' onSubmit={handleSubmit(onSubmit)}>
-            {questions.map((question, idx) => <Question key={question.id} {...question} register={register} errors={errors} idQuestion={idx}/>)
+            {questions.map((question, idx) => <Question key={question.id} {...question} register={register} errors={errors} idQuestion={idx} answerOptions={answerOptions}/>)
             }
             <Button />
 
@@ -61,8 +71,9 @@ function App() {
               </code>
             </pre>
           </form>
-        <Footer />
-      </MainSurvey>
+          <Footer />
+        </MainSurvey>
+      }
     </div>
   );
 }

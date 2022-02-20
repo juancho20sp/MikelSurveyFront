@@ -1,11 +1,13 @@
-import React from 'react';
-import {
-    useAnswerOptions
-} from '../../hooks';
+import React, { useState } from 'react';
 
-const Option = ({ title, divStyles, register, id, idQuestion }) => {
+const Option = ({ title, divStyles, register, id, idQuestion, answerOptions, errors }) => {
     const selectStyles = {
         border: '2px solid gray',
+        width: '100%',
+    }
+
+    const selectStylesDanger = {
+        border: '2px solid red',
         width: '100%',
     }
 
@@ -13,30 +15,16 @@ const Option = ({ title, divStyles, register, id, idQuestion }) => {
 
     }
 
-    const values = [
-        {
-            id: 0,
-            value: 'Value 1'
-        },
-        {
-            id: 1,
-            value: 'Value 2'
-        },
-        {
-            id: 2,
-            value: 'Value 3'
-        }
-    ]
+    const [selectId, setselectId] = useState(`question-${idQuestion}-select-${id}`);
 
-    
+    const isSelectMissing = Object.keys(errors).filter(key => key === selectId).length > 0;
 
     return <div style={divStyles} className="flex flex-col items-center justify-center">
         <p className='text-md font-semibold text-center'>TOPIC 1</p>
-        <select name="select" style={selectStyles} className='rounded-lg' {...register(`question-${idQuestion}-select-${id}`, { required: true })}>
+
+        <select name="select" style={isSelectMissing ? selectStylesDanger : selectStyles} className='rounded-lg' {...register(selectId, { required: true })}>
             <option value="">Seleccione una opción</option>
-            {/* // $ */}
-            {values.map(value => <option key={value.id} value={value.value}>{value.value}</option>)}
-            {/* {answerOptions.map(value => <option key={value.id} value={value.answer_value}>{value.answer_value}</option>)} */}
+            {answerOptions.map(value => <option key={value.id} value={value.answer_value}>{value.text_answer}</option>)}
         </select>
 </div>;
 };

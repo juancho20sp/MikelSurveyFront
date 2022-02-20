@@ -7,7 +7,7 @@ import {
 
 import './Question.css';
 
-const Question = ({text, register, errors, idQuestion}) => {
+const Question = ({text, register, errors, idQuestion, answerOptions}) => {
     const divStyle = {
         border: '1px solid gray',
         margin: '15px 5px',
@@ -70,7 +70,7 @@ const Question = ({text, register, errors, idQuestion}) => {
     <div style={divStyle} className='bg-white rounded-lg shadow-lg flex items-center'>
         <p className="question" style={questionStyle}>{text}</p>
         {
-            options.map(option => <Option key={option.id} title={option.title} divStyles={divStyles} register={register} id={option.id} idQuestion={idQuestion}/>)
+            options.map(option => <Option key={option.id} title={option.title} divStyles={divStyles} register={register} id={option.id} idQuestion={idQuestion} answerOptions={answerOptions} errors={errors}/>)
         }
     </div>
     {Object.keys(errors).filter(key => key.includes(`question-${idQuestion}`)).length > 0 && <p>ERROR!</p>}
