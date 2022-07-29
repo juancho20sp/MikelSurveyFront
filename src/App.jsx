@@ -40,7 +40,7 @@ function App() {
     useHomePrefetch();
 
   const onSubmit = async (data) => {
-    const date = new Date().toLocaleDateString();
+    const date = new Date().toLocaleDateString("en-US");
     // const date = new Date();
     const rank = data['question-0-select-0'];
 
