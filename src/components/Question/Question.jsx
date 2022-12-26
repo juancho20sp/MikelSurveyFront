@@ -94,7 +94,7 @@ const Question = ({
         className='bg-white rounded-lg shadow-lg flex items-center'
       >
         <p className='question' style={questionStyle}>
-          {text_question}
+          {text_question}:
         </p>
 
         {!is_shared &&
